@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# MATLAB
+*.asv
+*.mat
+*.mex*
+slprj/
+
+# Figures created at runtime by the scripts
+figures/
+
+# IDE / editor
+.vscode/
+.idea/
