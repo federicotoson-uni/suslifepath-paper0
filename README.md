@@ -1,5 +1,8 @@
 # SusLifePath Paper 0 — Code and Data
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20554998.svg)](https://doi.org/10.5281/zenodo.20554998)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Companion repository for the manuscript
 
 > Toson, F. *A simplified engineering algorithm for collision risk assessment and classification of LEO satellites.* Acta Astronautica, submitted 2026.
@@ -57,7 +60,7 @@ The two CSV files in `data/` are snapshots of the Celestrak GP (General Perturba
 
 If you use this code or data, please cite the paper and this software release. Once the Zenodo DOI is minted, the citation becomes:
 
-> Toson, F. (2026). *SusLifePath Paper 0: simplified collision-risk classifier for LEO satellites — code and data.* Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+> Toson, F. (2026). *SusLifePath Paper 0: simplified collision-risk classifier for LEO satellites — code and data* (v1.0.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.20554998
 
 ## Licence
 
