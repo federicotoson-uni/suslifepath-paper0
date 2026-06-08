@@ -43,7 +43,7 @@ PopulationData = databasecreator_real(CSV, Inf, DEBCSV);   % full real pop + deb
 %  fact sheets (ESA for ENVISAT and Sentinel-6; FCC SAT-MOD-20230207-00022
 %  for Starlink V2 Mini). Replacement costs are first-order class
 %  estimates (build cost for ENVISAT; programme cost for Sentinel-6; unit
-%  marginal cost for Starlink V2 Mini); the IDA 2024 LEO satellite cost
+%  marginal cost for Starlink V2 Mini); the IDA 2023 LEO satellite cost
 %  report (D-33436) is used as the order-of-magnitude reference for
 %  mid-size operational small satellites.
 % ====================================================================== %
