@@ -138,7 +138,7 @@ Consistent with Elsevier policy, the manuscript that this repository accompanies
 
 If you use this code or data, please cite the paper and this software release:
 
-> Toson, F. (2026). *SusLifePath Paper 0: simplified collision-risk classifier for LEO satellites — code and data* (v2.0.0) [Software]. Zenodo.
+> Toson, F. (2026). *SusLifePath Paper 0: simplified collision-risk classifier for LEO satellites — code and data* (v2.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.20589286
 
 ## Licence
 
