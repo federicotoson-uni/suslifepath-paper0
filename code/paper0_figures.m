@@ -91,7 +91,7 @@ x_off   = 22;   % horizontal offset to the right of each dashed line
 for k = 1:numel(mk)
     xline(mk(k),'LineStyle','--','Color',col_grey,'LineWidth',0.8);
     text(mk(k)+x_off, y_label, lbl{k}, 'Rotation',90, ...
-         'FontSize',8,'Color',[0.25 0.25 0.25], ...
+         'FontSize',10,'Color',[0.25 0.25 0.25], ...
          'VerticalAlignment','bottom','HorizontalAlignment','left');
 end
 xlabel('Perigee altitude (km)'); ylabel('Objects per 25 km bin');
@@ -116,7 +116,7 @@ thr   = [1e-2 1e-1 1e0 1e1];
 clab  = {'L','M','H','VH'};
 for t = 1:numel(thr)
     yline(thr(t),'LineStyle',':','Color',col_grey,'LineWidth',0.6);
-    text(3.55, thr(t), clab{t}, 'FontSize',8,'Color',col_grey, ...
+    text(3.55, thr(t), clab{t}, 'FontSize',10,'Color',col_grey, ...
          'VerticalAlignment','middle');
 end
 ylim([1e-3 1e4]);

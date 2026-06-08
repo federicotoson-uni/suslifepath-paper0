@@ -266,7 +266,7 @@ for c = 1:3
               'MarkerFaceColor', case_colors(c,:), 'MarkerEdgeColor','k', ...
               'MarkerSize', 13, 'LineWidth', 1.2);
     text(case_Ccol(c)*1.25, case_Ceco(c), case_names{c}, ...
-         'FontSize',9,'FontWeight','bold','Color',case_colors(c,:));
+         'FontSize',10,'FontWeight','bold','Color',case_colors(c,:));
     if c == 1
         h_legend(end+1) = hc;
         legend_labels{end+1} = 'case studies';
@@ -285,7 +285,7 @@ xlabel('$\tilde{R}^{col}$ (our normalised collective index)','Interpreter','late
 ylabel('$\tilde{R}^{eco}$ (snapshot-ECOB proxy)','Interpreter','latex','FontSize',11);
 title(sprintf('Internal benchmark: $\\rho_{Spearman} = %.2f$ on $n = %d$ joint sample', ...
               rho_S, numel(joint_col)), 'Interpreter','latex','FontSize',12);
-legend(h_legend, legend_labels, 'Location','northwest','FontSize',9);
+legend(h_legend, legend_labels, 'Location','northwest','FontSize',10);
 
 % --- Save vector PDF -------------------------------------------------- %
 out_pdf = fullfile(FIG_DIR, 'Figure_7_ecob_benchmark.pdf');
