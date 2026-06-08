@@ -8,19 +8,17 @@
 % ----------------------------------------------------------------------- %
 clear; close all; clc;
 
-% --- Absolute paths (match paper0_casestudies.m) ----------------------- %
-THESIS_CODE = ['/Users/federico/Desktop/AEROSPACE/04_DIDATTICA/LAUREE/' ...
-               'Magistrale/TESI MAGISTRALE/CODICE'];
-PAPER0_CODE = ['/Users/federico/Desktop/AEROSPACE/01_RICERCA/' ...
-               'PAPER_SusLifePath_2026/Paper0_SimplifiedAlgorithm/code'];
-FIG_DIR     = ['/Users/federico/Desktop/AEROSPACE/01_RICERCA/' ...
-               'PAPER_SusLifePath_2026/Paper0_SimplifiedAlgorithm/figures'];
-addpath(THESIS_CODE); addpath(PAPER0_CODE);
+% --- Auto path discovery (relative to this script's location) --------- %
+SCRIPT_DIR = fileparts(mfilename('fullpath'));
+REPO_ROOT  = fileparts(SCRIPT_DIR);
+DATA_DIR   = fullfile(REPO_ROOT, 'data');
+FIG_DIR    = fullfile(REPO_ROOT, 'figures');
+addpath(SCRIPT_DIR);
 if ~exist(FIG_DIR,'dir'), mkdir(FIG_DIR); end
 
 % --- Real catalogue (active + tracked debris) -------------------------- %
-CSV    = fullfile(PAPER0_CODE, '..', 'data', 'celestrak_active.csv');
-DEBCSV = fullfile(PAPER0_CODE, '..', 'data', 'celestrak_debris.csv');
+CSV    = fullfile(DATA_DIR, 'celestrak_active.csv');
+DEBCSV = fullfile(DATA_DIR, 'celestrak_debris.csv');
 PopulationData = databasecreator_real(CSV, Inf, DEBCSV);
 
 % --- Case definitions (identical to the driver) ------------------------ %
