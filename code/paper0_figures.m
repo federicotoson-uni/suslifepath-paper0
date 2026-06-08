@@ -67,7 +67,7 @@ h_act  = ALLact(:,1) - rearth;
 h_deb  = PopulationData.DEB(:,1) - rearth;
 edges  = 0:25:2000;
 
-f1 = figure('Visible','off','Units','centimeters','Position',[2 2 16 9]);
+f1 = figure('Visible','off','Units','centimeters','Position',[2 2 12 7]);
 histogram(h_act, edges, 'FaceColor',col_blue,'EdgeColor','none','FaceAlpha',0.85); hold on;
 histogram(h_deb, edges, 'FaceColor',col_oran,'EdgeColor','none','FaceAlpha',0.85);
 set(gca,'YScale','log');           % populations span orders of magnitude
@@ -89,22 +89,21 @@ x_off   = 22;   % horizontal offset to the right of each dashed line
 for k = 1:numel(mk)
     xline(mk(k),'LineStyle','--','Color',col_grey,'LineWidth',0.8);
     text(mk(k)+x_off, y_label, lbl{k}, 'Rotation',90, ...
-         'FontSize',10,'Color',[0.25 0.25 0.25], ...
+         'FontSize',14,'Color',[0.25 0.25 0.25], ...
          'VerticalAlignment','bottom','HorizontalAlignment','left');
 end
-xlabel('Perigee altitude (km)'); ylabel('Objects per 25 km bin');
-% Legend moved to southeast: the 1500-2000 km region of the plot is
-% almost empty, so the legend has clean white space and no longer
-% overlaps the Sentinel-6 label.
-legend({'Active satellites','Tracked debris'},'Box','off','Location','southeast');
-set(gca,'FontSize',10,'Box','on','Layer','top');
+xlabel('Perigee altitude (km)','FontSize',14);
+ylabel('Objects per 25 km bin','FontSize',14);
+legend({'Active satellites','Tracked debris'},'Box','off', ...
+       'Location','southeast','FontSize',13);
+set(gca,'FontSize',13,'Box','on','Layer','top');
 exportgraphics(f1, fullfile(FIG_DIR,'fig1_altitude_distribution.pdf'),'ContentType','vector');
 
 % ====================================================================== %
 %  FIGURE 2 - Individual vs collective asymmetry
 % ====================================================================== %
 names = {'ENVISAT','Sentinel-6','Starlink V2'};
-f2 = figure('Visible','off','Units','centimeters','Position',[2 2 16 9]);
+f2 = figure('Visible','off','Units','centimeters','Position',[2 2 12 7]);
 Y  = [Rt_ind; Rt_col]';            % 3x2
 b  = bar(Y,'grouped','BarWidth',0.9); hold on;
 b(1).FaceColor = col_blue; b(1).EdgeColor = 'none';
@@ -114,14 +113,14 @@ thr   = [1e-2 1e-1 1e0 1e1];
 clab  = {'L','M','H','VH'};
 for t = 1:numel(thr)
     yline(thr(t),'LineStyle',':','Color',col_grey,'LineWidth',0.6);
-    text(3.55, thr(t), clab{t}, 'FontSize',10,'Color',col_grey, ...
+    text(3.55, thr(t), clab{t}, 'FontSize',14,'Color',col_grey, ...
          'VerticalAlignment','middle');
 end
 ylim([1e-3 1e4]);
-set(gca,'XTickLabel',names,'FontSize',10,'Box','on','Layer','top');
-xlabel('Case study');
-ylabel('Normalised risk index $\tilde{R}$','Interpreter','latex');
-legend({'Individual','Collective'},'Box','off','Location','northwest');
+set(gca,'XTickLabel',names,'FontSize',13,'Box','on','Layer','top');
+xlabel('Case study','FontSize',14);
+ylabel('Normalised risk index $\tilde{R}$','Interpreter','latex','FontSize',14);
+legend({'Individual','Collective'},'Box','off','Location','northwest','FontSize',13);
 exportgraphics(f2, fullfile(FIG_DIR,'fig2_asymmetry.pdf'),'ContentType','vector');
 
 % --- Console echo (sanity check vs Table 2) ---------------------------- %

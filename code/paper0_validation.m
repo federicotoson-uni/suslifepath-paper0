@@ -237,7 +237,7 @@ fprintf('\n');
 % ====================================================================== %
 %  FIGURE 6: histogram (panel a) + altitude scatter (panel b)
 % ====================================================================== %
-fig = figure('Color','w','Position',[100 100 1100 430]);
+fig = figure('Color','w','Units','centimeters','Position',[2 2 22 9]);
 tl = tiledlayout(fig,1,2,'Padding','compact','TileSpacing','compact');
 
 % --- Panel (a): histogram of log10(R) --------------------------------- %
@@ -250,7 +250,7 @@ hh = histogram(ax1, log10(asym_a), edges_log, ...
 xline(ax1, 0, 'k--', 'LineWidth',1.2, 'HandleVisibility','off');
 text(ax1, 0.05, ax1.YLim(2)*0.50, 'R=1 (parity)', ...
      'Rotation',90,'HorizontalAlignment','center', ...
-     'FontSize',10,'Color',[.4 .4 .4]);
+     'FontSize',13,'Color',[.4 .4 .4]);
 % Case study markers
 case_colors = [0.7 0.1 0.1; 0.2 0.6 0.2; 0.85 0.5 0.0];
 for c = 1:3
@@ -262,7 +262,7 @@ yl = ylim(ax1);
 for c = 1:3
     text(ax1, log10(case_asym(c)), yl(2)*(0.65 + 0.10*c), ...
          sprintf(' %s (R=%.1f)', case_names{c}, case_asym(c)), ...
-         'Color', case_colors(c,:), 'FontSize',10, 'FontWeight','bold');
+         'Color', case_colors(c,:), 'FontSize',13, 'FontWeight','bold');
 end
 xlabel(ax1, '$\log_{10}(R)$, with $R = C_\mathrm{col}/C_\mathrm{ind}$','Interpreter','latex');
 ylabel(ax1, 'Count');
@@ -296,7 +296,7 @@ for c = 1:3
          'MarkerFaceColor', case_colors(c,:), 'MarkerEdgeColor','k', ...
          'MarkerSize', 12, 'LineWidth', 1.2, 'HandleVisibility','off');
     text(ax2, case_alts(c)+30, case_asym(c), case_names{c}, ...
-         'FontSize',10, 'FontWeight','bold','Color',case_colors(c,:));
+         'FontSize',13, 'FontWeight','bold','Color',case_colors(c,:));
 end
 yline(ax2, 1, 'k--', 'LineWidth',1.2, 'HandleVisibility','off');
 xlabel(ax2, 'Perigee altitude [km]');
@@ -304,7 +304,7 @@ ylabel(ax2, '$R = C_\mathrm{col}/C_\mathrm{ind}$','Interpreter','latex');
 title(ax2, '(b) Asymmetry vs altitude');
 xlim(ax2, [200 2000]);
 ylim(ax2, [1e-3 1e4]);
-legend(ax2, h_legend, 'Location','best','FontSize',10);
+legend(ax2, h_legend, 'Location','best','FontSize',13);
 
 % --- Save vector PDF --------------------------------------------------- %
 out_pdf = fullfile(FIG_DIR, 'Figure_6_validation.pdf');

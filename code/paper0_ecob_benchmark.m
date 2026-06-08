@@ -237,7 +237,7 @@ fprintf('\\end{table}\n\n');
 % ====================================================================== %
 %  FIGURE 7: scatter R_col vs R_eco (log-log), Spearman in legend
 % ====================================================================== %
-fig = figure('Color','w','Position',[100 100 720 600]);
+fig = figure('Color','w','Units','centimeters','Position',[2 2 13 11]);
 hold on; box on; grid on;
 set(gca,'XScale','log','YScale','log');
 
@@ -266,7 +266,7 @@ for c = 1:3
               'MarkerFaceColor', case_colors(c,:), 'MarkerEdgeColor','k', ...
               'MarkerSize', 13, 'LineWidth', 1.2);
     text(case_Ccol(c)*1.25, case_Ceco(c), case_names{c}, ...
-         'FontSize',10,'FontWeight','bold','Color',case_colors(c,:));
+         'FontSize',14,'FontWeight','bold','Color',case_colors(c,:));
     if c == 1
         h_legend(end+1) = hc;
         legend_labels{end+1} = 'case studies';
@@ -277,15 +277,16 @@ end
 xl = [1e-3, 1e4];
 plot(xl, xl, 'k:', 'LineWidth', 1.1, 'HandleVisibility','off');
 text(1e3, 5e2, '$\tilde{R}^{eco}=\tilde{R}^{col}$', ...
-     'Interpreter','latex','FontSize',10,'Color',[.3 .3 .3]);
+     'Interpreter','latex','FontSize',13,'Color',[.3 .3 .3]);
 
 xlim(xl);
 ylim([1e-3, 1e5]);
-xlabel('$\tilde{R}^{col}$ (our normalised collective index)','Interpreter','latex','FontSize',11);
-ylabel('$\tilde{R}^{eco}$ (snapshot-ECOB proxy)','Interpreter','latex','FontSize',11);
+xlabel('$\tilde{R}^{col}$ (our normalised collective index)','Interpreter','latex','FontSize',14);
+ylabel('$\tilde{R}^{eco}$ (snapshot-ECOB proxy)','Interpreter','latex','FontSize',14);
 title(sprintf('Internal benchmark: $\\rho_{Spearman} = %.2f$ on $n = %d$ joint sample', ...
-              rho_S, numel(joint_col)), 'Interpreter','latex','FontSize',12);
-legend(h_legend, legend_labels, 'Location','northwest','FontSize',10);
+              rho_S, numel(joint_col)), 'Interpreter','latex','FontSize',14);
+legend(h_legend, legend_labels, 'Location','northwest','FontSize',13);
+set(gca,'FontSize',13);
 
 % --- Save vector PDF -------------------------------------------------- %
 out_pdf = fullfile(FIG_DIR, 'Figure_7_ecob_benchmark.pdf');
