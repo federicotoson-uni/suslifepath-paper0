@@ -8,17 +8,19 @@
 % ----------------------------------------------------------------------- %
 clear; close all; clc;
 
-% --- Auto-discover paths relative to this script's location ----------- %
-SCRIPT_DIR = fileparts(mfilename('fullpath'));
-REPO_ROOT  = fileparts(SCRIPT_DIR);
-DATA_DIR   = fullfile(REPO_ROOT, 'data');
-FIG_DIR    = fullfile(REPO_ROOT, 'figures');
-addpath(SCRIPT_DIR);
+% --- Absolute paths (match paper0_casestudies.m) ----------------------- %
+THESIS_CODE = ['/Users/federico/Desktop/AEROSPACE/04_DIDATTICA/LAUREE/' ...
+               'Magistrale/TESI MAGISTRALE/CODICE'];
+PAPER0_CODE = ['/Users/federico/Desktop/AEROSPACE/01_RICERCA/' ...
+               'PAPER_SusLifePath_2026/Paper0_SimplifiedAlgorithm/code'];
+FIG_DIR     = ['/Users/federico/Desktop/AEROSPACE/01_RICERCA/' ...
+               'PAPER_SusLifePath_2026/Paper0_SimplifiedAlgorithm/figures'];
+addpath(THESIS_CODE); addpath(PAPER0_CODE);
 if ~exist(FIG_DIR,'dir'), mkdir(FIG_DIR); end
 
 % --- Real catalogue (active + tracked debris) -------------------------- %
-CSV    = fullfile(DATA_DIR, 'celestrak_active.csv');
-DEBCSV = fullfile(DATA_DIR, 'celestrak_debris.csv');
+CSV    = fullfile(PAPER0_CODE, '..', 'data', 'celestrak_active.csv');
+DEBCSV = fullfile(PAPER0_CODE, '..', 'data', 'celestrak_debris.csv');
 PopulationData = databasecreator_real(CSV, Inf, DEBCSV);
 
 % --- Case definitions (identical to the driver) ------------------------ %
@@ -72,22 +74,31 @@ histogram(h_act, edges, 'FaceColor',col_blue,'EdgeColor','none','FaceAlpha',0.85
 histogram(h_deb, edges, 'FaceColor',col_oran,'EdgeColor','none','FaceAlpha',0.85);
 set(gca,'YScale','log');           % populations span orders of magnitude
 xlim([0 2000]);
-yl = ylim; if yl(1) < 1, yl(1) = 0.7; ylim(yl); end
+% Extend ylim upward to leave headroom for the case-study labels above the
+% data peaks, so the labels never overlap either the histogram bars or
+% the legend.
+ylim([0.7, 5e4]);
 
 mk    = [525 700 770 1336];
 lbl   = {'Starlink (525)','Reference (700)','ENVISAT (770)','Sentinel-6 (1336)'};
-% Stagger label heights in four distinct rows to avoid overlap on the
-% closely-spaced 525/700/770 km labels (only ~245 km between the
-% Starlink and ENVISAT markers when both labels are vertical).
-y_pos = [3500, 30, 800, 3500];   % Star top, Ref low, ENV mid, Sen top
-x_off = [22, 22, 22, 22];
+% Place all four labels above the data peaks (max bar ~4.5e3) on a single
+% horizontal row at y = 1.5e4, rotated 90 deg. With 'VerticalAlignment'
+% set to 'bottom', the text grows UPWARD from this baseline, staying in
+% the headroom region [1.5e4, 5e4]. Bars never exceed 5e3 in this band,
+% so no overlap with data is possible.
+y_label = 1.5e4;
+x_off   = 22;   % horizontal offset to the right of each dashed line
 for k = 1:numel(mk)
     xline(mk(k),'LineStyle','--','Color',col_grey,'LineWidth',0.8);
-    text(mk(k)+x_off(k), y_pos(k), lbl{k}, 'Rotation',90, ...
-         'FontSize',8,'Color',[0.25 0.25 0.25],'VerticalAlignment','top');
+    text(mk(k)+x_off, y_label, lbl{k}, 'Rotation',90, ...
+         'FontSize',8,'Color',[0.25 0.25 0.25], ...
+         'VerticalAlignment','bottom','HorizontalAlignment','left');
 end
 xlabel('Perigee altitude (km)'); ylabel('Objects per 25 km bin');
-legend({'Active satellites','Tracked debris'},'Box','off','Location','northeast');
+% Legend moved to southeast: the 1500-2000 km region of the plot is
+% almost empty, so the legend has clean white space and no longer
+% overlaps the Sentinel-6 label.
+legend({'Active satellites','Tracked debris'},'Box','off','Location','southeast');
 set(gca,'FontSize',10,'Box','on','Layer','top');
 exportgraphics(f1, fullfile(FIG_DIR,'fig1_altitude_distribution.pdf'),'ContentType','vector');
 
