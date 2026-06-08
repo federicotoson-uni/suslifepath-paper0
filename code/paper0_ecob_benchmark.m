@@ -259,25 +259,26 @@ for tl = ["constellation","EO/science"]
     end
 end
 
-% Case studies, diamonds
+% Case studies, diamonds - each case as a separate legend entry (no
+% more text labels next to the diamonds; the legend serves as the key
+% so the three case studies are explicitly named instead of being
+% lumped under a generic "case studies" tag that only shows the
+% ENVISAT colour)
 case_colors = [0.7 0.1 0.1; 0.2 0.6 0.2; 0.85 0.5 0.0];
 for c = 1:3
     hc = plot(case_Ccol(c), case_Ceco(c), 'd', ...
               'MarkerFaceColor', case_colors(c,:), 'MarkerEdgeColor','k', ...
               'MarkerSize', 13, 'LineWidth', 1.2);
-    text(case_Ccol(c)*1.25, case_Ceco(c), case_names{c}, ...
-         'FontSize',14,'FontWeight','bold','Color',case_colors(c,:));
-    if c == 1
-        h_legend(end+1) = hc;
-        legend_labels{end+1} = 'case studies';
-    end
+    h_legend(end+1) = hc;
+    legend_labels{end+1} = case_names{c};
 end
 
 % Identity reference line (Rcol = Reco)
 xl = [1e-3, 1e4];
 plot(xl, xl, 'k:', 'LineWidth', 1.1, 'HandleVisibility','off');
-text(1e3, 5e2, '$\tilde{R}^{eco}=\tilde{R}^{col}$', ...
-     'Interpreter','latex','FontSize',13,'Color',[.3 .3 .3]);
+text(3e0, 10^-0.5, '$\tilde{R}^{eco}=\tilde{R}^{col}$', ...
+     'Interpreter','latex','FontSize',14,'Color',[.3 .3 .3], ...
+     'HorizontalAlignment','center');
 
 xlim(xl);
 ylim([1e-3, 1e5]);
@@ -285,7 +286,7 @@ xlabel('$\tilde{R}^{col}$ (our normalised collective index)','Interpreter','late
 ylabel('$\tilde{R}^{eco}$ (snapshot-ECOB proxy)','Interpreter','latex','FontSize',14);
 title(sprintf('Internal benchmark: $\\rho_{Spearman} = %.2f$ on $n = %d$ joint sample', ...
               rho_S, numel(joint_col)), 'Interpreter','latex','FontSize',14);
-legend(h_legend, legend_labels, 'Location','northwest','FontSize',13);
+legend(h_legend, legend_labels, 'Location','northwest','FontSize',10);
 set(gca,'FontSize',13);
 
 % --- Save vector PDF -------------------------------------------------- %

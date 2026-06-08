@@ -246,25 +246,21 @@ hold(ax1,'on'); box(ax1,'on'); grid(ax1,'on');
 edges_log = -3:0.4:4;
 hh = histogram(ax1, log10(asym_a), edges_log, ...
                'FaceColor',[0.30 0.45 0.75],'EdgeColor','w','FaceAlpha',0.85);
-% Reference vertical lines
-xline(ax1, 0, 'k--', 'LineWidth',1.2, 'HandleVisibility','off');
-text(ax1, 0.05, ax1.YLim(2)*0.50, 'R=1 (parity)', ...
-     'Rotation',90,'HorizontalAlignment','center', ...
-     'FontSize',13,'Color',[.4 .4 .4]);
-% Case study markers
+% Parity reference line - included in the legend
+h_par = xline(ax1, 0, 'k--', 'LineWidth',1.2);
+% Case study markers - lines also identified through the legend
 case_colors = [0.7 0.1 0.1; 0.2 0.6 0.2; 0.85 0.5 0.0];
+h_case    = gobjects(3,1);
+case_lbls = cell(3,1);
 for c = 1:3
-    xline(ax1, log10(case_asym(c)), '-', 'Color', case_colors(c,:), ...
-          'LineWidth',1.5, 'HandleVisibility','off');
+    h_case(c) = xline(ax1, log10(case_asym(c)), '-', 'Color', case_colors(c,:), ...
+                       'LineWidth',1.5);
+    case_lbls{c} = sprintf('%s (R=%.1f)', case_names{c}, case_asym(c));
 end
-% Re-fetch ylim after histogram drawn
-yl = ylim(ax1);
-for c = 1:3
-    text(ax1, log10(case_asym(c)), yl(2)*(0.65 + 0.10*c), ...
-         sprintf(' %s (R=%.1f)', case_names{c}, case_asym(c)), ...
-         'Color', case_colors(c,:), 'FontSize',13, 'FontWeight','bold');
-end
-xlabel(ax1, '$\log_{10}(R)$, with $R = C_\mathrm{col}/C_\mathrm{ind}$','Interpreter','latex');
+leg_labels = [{'R=1 (parity)'}; case_lbls(:)];
+legend(ax1, [h_par; h_case], leg_labels, ...
+       'Location','northwest','FontSize',9,'Box','on','Color','w');
+xlabel(ax1, '$\log_{10}(R)$, with $R = C_\mathrm{col}/C_\mathrm{ind}$','Interpreter','latex','FontSize',12);
 ylabel(ax1, 'Count');
 title(ax1, sprintf('(a) Asymmetry distribution, N=%d', N));
 xlim(ax1, [-3 4]);
@@ -295,8 +291,10 @@ for c = 1:3
     plot(ax2, case_alts(c), case_asym(c), 'd', ...
          'MarkerFaceColor', case_colors(c,:), 'MarkerEdgeColor','k', ...
          'MarkerSize', 12, 'LineWidth', 1.2, 'HandleVisibility','off');
-    text(ax2, case_alts(c)+30, case_asym(c), case_names{c}, ...
-         'FontSize',13, 'FontWeight','bold','Color',case_colors(c,:));
+    y_lab = case_asym(c);
+    if c == 1, y_lab = y_lab * 0.5; end   % ENVISAT pushed below diamond
+    text(ax2, case_alts(c)+60, y_lab, case_names{c}, ...
+         'FontSize',10, 'FontWeight','bold','Color',case_colors(c,:));
 end
 yline(ax2, 1, 'k--', 'LineWidth',1.2, 'HandleVisibility','off');
 xlabel(ax2, 'Perigee altitude [km]');
@@ -304,7 +302,7 @@ ylabel(ax2, '$R = C_\mathrm{col}/C_\mathrm{ind}$','Interpreter','latex');
 title(ax2, '(b) Asymmetry vs altitude');
 xlim(ax2, [200 2000]);
 ylim(ax2, [1e-3 1e4]);
-legend(ax2, h_legend, 'Location','best','FontSize',13);
+legend(ax2, h_legend, 'Location','best','FontSize',10);
 
 % --- Save vector PDF --------------------------------------------------- %
 out_pdf = fullfile(FIG_DIR, 'Figure_6_validation.pdf');

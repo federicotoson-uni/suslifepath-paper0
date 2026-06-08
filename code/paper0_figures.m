@@ -72,31 +72,29 @@ histogram(h_act, edges, 'FaceColor',col_blue,'EdgeColor','none','FaceAlpha',0.85
 histogram(h_deb, edges, 'FaceColor',col_oran,'EdgeColor','none','FaceAlpha',0.85);
 set(gca,'YScale','log');           % populations span orders of magnitude
 xlim([0 2000]);
-% Extend ylim upward to leave headroom for the case-study labels above the
-% data peaks, so the labels never overlap either the histogram bars or
-% the legend.
-ylim([0.7, 5e4]);
+% ylim raised to 1e6 so case-study labels can be placed above the data
+% peaks (~5e3) in a vertical stagger without ever touching either the
+% bars or the legend (now outside the axes).
+ylim([0.7, 1e6]);
 
-mk    = [525 700 770 1336];
-lbl   = {'Starlink (525)','Reference (700)','ENVISAT (770)','Sentinel-6 (1336)'};
-% Place all four labels above the data peaks (max bar ~4.5e3) on a single
-% horizontal row at y = 1.5e4, rotated 90 deg. With 'VerticalAlignment'
-% set to 'bottom', the text grows UPWARD from this baseline, staying in
-% the headroom region [1.5e4, 5e4]. Bars never exceed 5e3 in this band,
-% so no overlap with data is possible.
-y_label = 1.5e4;
-x_off   = 22;   % horizontal offset to the right of each dashed line
+mk        = [525 700 770 1336];
+% Horizontal labels at four descending y levels (Starlink highest,
+% Sentinel-6 lowest), each anchored to the LEFT of its dashed line so
+% it begins immediately to the right of the marker.
+lbl       = {'Starlink','Reference','ENVISAT','Sentinel-6'};
+y_levels  = [3e5, 6e4, 1e4, 2e3];
 for k = 1:numel(mk)
     xline(mk(k),'LineStyle','--','Color',col_grey,'LineWidth',0.8);
-    text(mk(k)+x_off, y_label, lbl{k}, 'Rotation',90, ...
-         'FontSize',14,'Color',[0.25 0.25 0.25], ...
-         'VerticalAlignment','bottom','HorizontalAlignment','left');
+    text(mk(k), y_levels(k), [' ' lbl{k}], 'Rotation',0, ...
+         'FontSize',10,'Color',[0.25 0.25 0.25], ...
+         'VerticalAlignment','middle','HorizontalAlignment','left');
 end
-xlabel('Perigee altitude (km)','FontSize',14);
-ylabel('Objects per 25 km bin','FontSize',14);
+xlabel('Perigee altitude (km)','FontSize',9);
+ylabel('Objects per 25 km bin','FontSize',9);
+% Legend inside the axes, top-right (per author request).
 legend({'Active satellites','Tracked debris'},'Box','off', ...
-       'Location','southeast','FontSize',13);
-set(gca,'FontSize',13,'Box','on','Layer','top');
+       'Location','northeast','FontSize',9);
+set(gca,'FontSize',9,'Box','on','Layer','top');
 exportgraphics(f1, fullfile(FIG_DIR,'fig1_altitude_distribution.pdf'),'ContentType','vector');
 
 % ====================================================================== %
@@ -113,14 +111,14 @@ thr   = [1e-2 1e-1 1e0 1e1];
 clab  = {'L','M','H','VH'};
 for t = 1:numel(thr)
     yline(thr(t),'LineStyle',':','Color',col_grey,'LineWidth',0.6);
-    text(3.55, thr(t), clab{t}, 'FontSize',14,'Color',col_grey, ...
+    text(3.55, thr(t), clab{t}, 'FontSize',10,'Color',col_grey, ...
          'VerticalAlignment','middle');
 end
 ylim([1e-3 1e4]);
-set(gca,'XTickLabel',names,'FontSize',13,'Box','on','Layer','top');
-xlabel('Case study','FontSize',14);
-ylabel('Normalised risk index $\tilde{R}$','Interpreter','latex','FontSize',14);
-legend({'Individual','Collective'},'Box','off','Location','northwest','FontSize',13);
+set(gca,'XTickLabel',names,'FontSize',9,'Box','on','Layer','top');
+xlabel('Case study','FontSize',9);
+ylabel('Normalised risk index $\tilde{R}$','Interpreter','latex','FontSize',9);
+legend({'Individual','Collective'},'Box','off','Location','northeast','FontSize',9);
 exportgraphics(f2, fullfile(FIG_DIR,'fig2_asymmetry.pdf'),'ContentType','vector');
 
 % --- Console echo (sanity check vs Table 2) ---------------------------- %
