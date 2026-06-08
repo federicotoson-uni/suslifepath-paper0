@@ -283,7 +283,7 @@ xlim(xl);
 ylim([1e-3, 1e5]);
 xlabel('$\tilde{R}^{col}$ (our normalised collective index)','Interpreter','latex','FontSize',11);
 ylabel('$\tilde{R}^{eco}$ (snapshot-ECOB proxy)','Interpreter','latex','FontSize',11);
-title(sprintf('Internal benchmark: $\\rho_{Spearman} = %.3f$ on $n = %d$ joint sample', ...
+title(sprintf('Internal benchmark: $\\rho_{Spearman} = %.2f$ on $n = %d$ joint sample', ...
               rho_S, numel(joint_col)), 'Interpreter','latex','FontSize',12);
 legend(h_legend, legend_labels, 'Location','northwest','FontSize',9);
 
