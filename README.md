@@ -5,7 +5,7 @@
 
 Companion repository for the manuscript
 
-> Toson, F. *A simplified engineering algorithm for collision risk assessment and classification of LEO satellites.* Acta Astronautica, submitted 2026.
+> Toson, F. *A simplified engineering algorithm for collision risk assessment and classification of LEO satellites.* Manuscript in preparation for submission to Acta Astronautica, 2026.
 
 The MATLAB toolchain reproduces all numerical results, figures and tables of the paper from a May 2026 Celestrak General Perturbations catalogue snapshot, including the N=100 statistical validation and the snapshot-ECOB proxy benchmark added in the camera-ready revision.
 
