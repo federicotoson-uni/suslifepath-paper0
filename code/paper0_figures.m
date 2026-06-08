@@ -76,13 +76,14 @@ yl = ylim; if yl(1) < 1, yl(1) = 0.7; ylim(yl); end
 
 mk    = [525 700 770 1336];
 lbl   = {'Starlink (525)','Reference (700)','ENVISAT (770)','Sentinel-6 (1336)'};
-% Stagger label heights in two rows to avoid 700/770 visual overlap
-y_hi  = 4000;     % upper row (close to top of log axis)
-y_lo  = 2;        % lower row (close to bottom of log axis, above yl(1))
-y_pos = [y_hi, y_lo, y_hi, y_lo];   % alternate: hi, lo, hi, lo
+% Stagger label heights in four distinct rows to avoid overlap on the
+% closely-spaced 525/700/770 km labels (only ~245 km between the
+% Starlink and ENVISAT markers when both labels are vertical).
+y_pos = [3500, 30, 800, 3500];   % Star top, Ref low, ENV mid, Sen top
+x_off = [22, 22, 22, 22];
 for k = 1:numel(mk)
     xline(mk(k),'LineStyle','--','Color',col_grey,'LineWidth',0.8);
-    text(mk(k)+18, y_pos(k), lbl{k}, 'Rotation',90, ...
+    text(mk(k)+x_off(k), y_pos(k), lbl{k}, 'Rotation',90, ...
          'FontSize',8,'Color',[0.25 0.25 0.25],'VerticalAlignment','top');
 end
 xlabel('Perigee altitude (km)'); ylabel('Objects per 25 km bin');

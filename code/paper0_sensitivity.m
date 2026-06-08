@@ -100,7 +100,7 @@ xlim([0.30 0.78]);
 ylim([1e-2 1e4]);
 xlabel('Fragmentation-weight exponent $\alpha$','Interpreter','latex');
 ylabel('Normalised collective index $\tilde{R}^{col}$','Interpreter','latex');
-legend('show','Location','east','FontSize',8,'Box','off');
+legend('show','Location','northwest','FontSize',8,'Box','off');
 grid on; set(gca,'FontSize',10,'Box','on','GridAlpha',0.15,'Layer','top');
 
 exportgraphics(f5, fullfile(FIG_DIR,'fig5_alpha_sensitivity.pdf'),'ContentType','vector');

@@ -22,8 +22,9 @@ function [PopulationData] = databasecreator_real(csvpath, max_per_class, debris_
     a  = (mu / n^2)^(1/3),  n = MEAN_MOTION * 2*pi / 86400   [rad/s]
     rp = a * (1 - ecc)                                       [km]
   Fields absent from a TLE use documented defaults (active: lt=5, surf=5,
-  cost=10; debris: lt=50, surf=1, cost=0). TODO: refine surface from SATCAT
-  RCS size if needed.
+  cost=10; debris: lt=50, surf=1, cost=0). Surface defaults can be refined
+  from SATCAT RCS size when per-object granularity is needed; the present
+  analysis only uses the orbital state and the population count per shell.
 
   INPUT:
     csvpath        - Celestrak GP CSV of ACTIVE satellites (celestrak_active.csv)

@@ -13,14 +13,11 @@
 
   Paths are auto-discovered relative to this script's location.
 
-  STATUS (both earlier TODOs now resolved):
-  (1) DONE: population is built from the real 2026 Celestrak GP catalogue
-      via databasecreator_real.m (active + tracked debris), not the 2022
-      thesis snapshot.
-  (2) DONE: the COLLECTIVE index uses the proper kinetic-flux computation in
-      collective_probability.m (operational density rho_op x sigma_m x v_rel
-      x T_total x f_frag). The earlier placeholder has been removed.
-      See Paper 0 Section 3.2 for P_col.
+  The population is built from the real 2026 Celestrak GP catalogue via
+  databasecreator_real.m (active + tracked debris). The collective index
+  uses the kinetic-flux formulation of collective_probability.m
+  (operational density rho_op x sigma_m x v_rel x T_total x f_frag); see
+  Section 3.2 of the manuscript for the formal definition of P_col.
 %}
 % ----------------------------------------------------------------------- %
 clear; close all; clc;
@@ -42,8 +39,13 @@ PopulationData = databasecreator_real(CSV, Inf, DEBCSV);   % full real pop + deb
 
 % ====================================================================== %
 %  CASE DEFINITIONS  (perigee radius r = altitude + 6378 km)
-%  TODO: confirm cross-sections (ex_surf/tot_surf) and costs against
-%  public sources; values below are first-pass engineering estimates.
+%  Cross-sections (ex_surf/tot_surf) are engineering estimates from public
+%  fact sheets (ESA for ENVISAT and Sentinel-6; FCC SAT-MOD-20230207-00022
+%  for Starlink V2 Mini). Replacement costs are first-order class
+%  estimates (build cost for ENVISAT; programme cost for Sentinel-6; unit
+%  marginal cost for Starlink V2 Mini); the IDA 2024 LEO satellite cost
+%  report (D-33436) is used as the order-of-magnitude reference for
+%  mid-size operational small satellites.
 % ====================================================================== %
 cases = struct();
 

@@ -55,8 +55,9 @@ function [P_col, details] = collective_probability(PopulationData, mission, sc, 
 
 % --- Constants --------------------------------------------------------- %
 rearth = 6378;               % [km]
-v_rel  = 10;                 % [km/s] mean relative velocity in LEO (typical)
-                             % TODO: refine per-band / per-inclination if needed
+v_rel  = 10;                 % [km/s] mean relative velocity in LEO (typical;
+                             % consistent with Rossi and Farinella 1992,
+                             % 9.65 +/- 0.88 km/s)
 dh     = 25;                 % [km] shell half-width around mission altitude
 sec_per_year = 3.15576e7;    % [s/y]
 if nargin < 4 || isempty(S_ref)
@@ -101,8 +102,10 @@ P_col_base = rate * T_total;                       % [expected events]
 % the reference mission's tot_surf) so the reference mission has f_frag = 1.
 % A 0.5 exponent is used (more conservative than the 0.75 fragment-count
 % scaling of NASA breakup models) to avoid over-amplifying very large objects
-% such as defunct platforms. TODO: replace tot_surf proxy with a real mass
-% estimate when available.
+% such as defunct platforms. The area-based proxy is the design choice
+% of this paper; a mass-based alternative (M^0.75, NASA Standard Breakup
+% Model) is implemented separately in ecob_proxy.m and benchmarked in
+% Section 5.1 of the manuscript.
 f_frag = (sc.tot_surf / S_ref)^0.5;                % [-]
 
 % --- Collective contribution ------------------------------------------- %
