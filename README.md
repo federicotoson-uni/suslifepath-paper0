@@ -32,6 +32,8 @@ suslifepath-paper0/
 │   │                                  N=100 sample, Figure 6 + Table 5 (Spearman rho)
 │   ├── paper0_literature_anchor.m     Section 5.1: Table 6 — anchor against published
 │   │                                  ECOB values for MetOp-A and Sentinel-2
+│   ├── paper0_cubesat_corollary.m     Section 4.3: educational smallsat corollary
+│   │                                  (3U CubeSat / 2P PocketCube at the Starlink shell)
 │   └── paper0_sensitivity.m           Figure 7 (f_frag exponent sweep, class invariance)
 ├── data/                              Celestrak GP catalogue snapshots
 │   ├── celestrak_active.csv           14 727 active LEO satellites, 29 May 2026 snapshot
@@ -58,6 +60,7 @@ Tested on MATLAB R2026a. Statistics and Machine Learning Toolbox is required onl
 | `paper0_parametric`        | Section 4.3: Figure 5 + Table 4 (cost thresholds C*(h))        | PDF + threshold table           |
 | `paper0_ecob_benchmark`    | Section 5.1: Figure 6 + Table 5 (Spearman rho, ECOB benchmark) | Rank correlation + LaTeX snippet|
 | `paper0_literature_anchor` | Section 5.1: Table 6 (anchor vs published ECOB values)         | Ratios + LaTeX snippet          |
+| `paper0_cubesat_corollary` | Section 4.3: educational smallsat corollary (R~43 at 1 MUSD, R~460 at 50 kUSD) | Numeric table + C* per geometry |
 | `paper0_sensitivity`       | Figure 7 (f_frag exponent sweep)                               | PDF + class invariance check    |
 
 All paths are auto-discovered from `mfilename('fullpath')`. No manual configuration needed; just `cd` to `code/` and run.
