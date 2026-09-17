@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this toolchain, please cite both the software (this Zenodo record) and the associated paper."
+title: "suslifepath-paper0: collision-risk index toolchain and catalogue snapshot"
+abstract: >-
+  MATLAB toolchain reproducing the numerical results, figures and tables of the
+  companion manuscript on a simplified engineering algorithm for collision risk
+  assessment and classification of LEO satellites, from a May 2026 Celestrak
+  General Perturbations catalogue snapshot.
+type: software
+authors:
+  - family-names: Toson
+    given-names: Federico
+    orcid: "https://orcid.org/0000-0002-6978-3619"
+    affiliation: 'CISAS "G. Colombo", University of Padova'
+version: 2.0.1
+date-released: '2026-06-10'
+doi: 10.5281/zenodo.20554997
+license: MIT
+repository-code: "https://github.com/federicotoson-uni/suslifepath-paper0"
+keywords:
+  - space debris
+  - collision risk
+  - low Earth orbit
+  - space sustainability
+  - life cycle assessment
+preferred-citation:
+  type: article
+  title: "A simplified engineering algorithm for collision risk assessment and classification of LEO satellites"
+  authors:
+    - family-names: Toson
+      given-names: Federico
+      orcid: "https://orcid.org/0000-0002-6978-3619"
+  journal: "Advances in Space Research"
+  year: 2026
+  notes: "Manuscript submitted; pre-print arXiv:2606.17947 (https://doi.org/10.48550/arXiv.2606.17947). Journal DOI to be added on acceptance."

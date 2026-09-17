@@ -1,0 +1,28 @@
+{
+  "title": "suslifepath-paper0: collision-risk index toolchain and catalogue snapshot",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "creators": [
+    {
+      "name": "Toson, Federico",
+      "affiliation": "CISAS \"G. Colombo\", University of Padova, Italy",
+      "orcid": "0000-0002-6978-3619"
+    }
+  ],
+  "description": "MATLAB toolchain reproducing the numerical results, figures and tables of the companion manuscript on a simplified engineering algorithm for collision risk assessment and classification of LEO satellites, from a May 2026 Celestrak General Perturbations catalogue snapshot.",
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.48550/arXiv.2606.17947",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-preprint"
+    }
+  ],
+  "keywords": [
+    "space debris",
+    "collision risk",
+    "low Earth orbit",
+    "space sustainability",
+    "life cycle assessment"
+  ]
+}
