@@ -18,8 +18,8 @@ A_sta = 30;
 
 % Baseline (alpha = 0.5) collective indices from paper0_casestudies.m run
 Rcol_env_05 = 903.186;
-Rcol_sen_05 = 0.047;
-Rcol_sta_05 = 29.945;
+Rcol_sen_05 = 0.0233;   % revision: Sentinel-6A removed from its own shell (R2-7.1)
+Rcol_sta_05 = 29.933;
 
 % Sweep exponents
 alphas = [0.30, 0.40, 0.50, 0.60, 0.75];

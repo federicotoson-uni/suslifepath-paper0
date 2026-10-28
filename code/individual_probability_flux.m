@@ -59,6 +59,12 @@ ALL = [PopulationData.LEO; PopulationData.GEO; PopulationData.OTH; PopulationDat
 r_pop = ALL(:,1);                                  % [km] perigee radii
 in_shell = (r_pop >= r_m - dh) & (r_pop <= r_m + dh);
 n_local = sum(in_shell);
+% A catalogued mission belongs to the population it is exposed to: with
+% mission.in_catalogue = true it is removed from its own shell count
+% (revision, R2-7.1; for Sentinel-6 the shell holds only Sentinel-6A and 6B).
+if isfield(mission, 'in_catalogue') && mission.in_catalogue
+    n_local = max(n_local - 1, 0);
+end
 
 r_lo = rearth + h_m - dh;
 r_hi = rearth + h_m + dh;

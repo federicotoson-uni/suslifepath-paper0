@@ -305,7 +305,7 @@ ylim(ax2, [1e-3 1e4]);
 legend(ax2, h_legend, 'Location','best','FontSize',10);
 
 % --- Save vector PDF --------------------------------------------------- %
-out_pdf = fullfile(FIG_DIR, 'Figure_6_validation.pdf');
+out_pdf = fullfile(FIG_DIR, 'Figure_6_validation_submitted.pdf');   % revision: the paper's figure now comes from paper0_catalogue.m
 exportgraphics(fig, out_pdf, 'ContentType','vector');
 fprintf('Saved: %s\n', out_pdf);
 

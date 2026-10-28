@@ -5,15 +5,17 @@ abstract: >-
   MATLAB toolchain reproducing the numerical results, figures and tables of the
   companion manuscript on a simplified engineering algorithm for collision risk
   assessment and classification of LEO satellites, from a May 2026 Celestrak
-  General Perturbations catalogue snapshot.
+  General Perturbations catalogue snapshot. Version 2.1.0 adds the evaluation across
+  the whole catalogue, the Sentinel-6 end-of-life options and the collision-avoidance
+  sensitivity of the revision for Advances in Space Research.
 type: software
 authors:
   - family-names: Toson
     given-names: Federico
     orcid: "https://orcid.org/0000-0002-6978-3619"
     affiliation: 'CISAS "G. Colombo", University of Padova'
-version: 2.0.1
-date-released: '2026-06-10'
+version: 2.1.0
+date-released: '2026-10-28'
 doi: 10.5281/zenodo.20554997
 license: MIT
 repository-code: "https://github.com/federicotoson-uni/suslifepath-paper0"
@@ -32,4 +34,4 @@ preferred-citation:
       orcid: "https://orcid.org/0000-0002-6978-3619"
   journal: "Advances in Space Research"
   year: 2026
-  notes: "Manuscript submitted; pre-print arXiv:2606.17947 (https://doi.org/10.48550/arXiv.2606.17947). Journal DOI to be added on acceptance."
+  notes: "Manuscript under revision at Advances in Space Research; pre-print arXiv:2606.17947 (https://doi.org/10.48550/arXiv.2606.17947). Journal DOI to be added on acceptance."

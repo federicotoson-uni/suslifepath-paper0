@@ -27,10 +27,10 @@ cases(1).name = 'ENVISAT';
 cases(1).mission = struct('r',7148,'lt',10, 'dt',200,'cost',2.3e9);
 cases(1).sc      = struct('ex_surf',100,'tot_surf',250);
 cases(2).name = 'Sentinel-6';
-cases(2).mission = struct('r',7714,'lt',5.5,'dt',25, 'cost',4.0e8);
+cases(2).mission = struct('r',7714,'lt',5.5,'dt',25, 'cost',4.0e8,'in_catalogue',true);
 cases(2).sc      = struct('ex_surf',10, 'tot_surf',25);
 cases(3).name = 'Starlink V2';
-cases(3).mission = struct('r',6903,'lt',5,  'dt',5,  'cost',1.0e6);
+cases(3).mission = struct('r',6903,'lt',5,  'dt',5,  'cost',1.0e6,'in_catalogue',true);
 cases(3).sc      = struct('ex_surf',12, 'tot_surf',30);
 
 % --- Fixed reference mission (700 km SSO smallsat) --------------------- %
@@ -103,6 +103,7 @@ exportgraphics(f1, fullfile(FIG_DIR,'fig1_altitude_distribution.pdf'),'ContentTy
 names = {'ENVISAT','Sentinel-6','Starlink V2'};
 f2 = figure('Visible','off','Units','centimeters','Position',[2 2 12 7]);
 Y  = [Rt_ind; Rt_col]';            % 3x2
+Y(1,1) = NaN;                      % ENVISAT, defunct: no individual axis (revision, D1)
 b  = bar(Y,'grouped','BarWidth',0.9); hold on;
 b(1).FaceColor = col_blue; b(1).EdgeColor = 'none';
 b(2).FaceColor = col_oran; b(2).EdgeColor = 'none';

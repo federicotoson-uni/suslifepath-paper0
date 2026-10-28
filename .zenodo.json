@@ -10,7 +10,7 @@
       "orcid": "0000-0002-6978-3619"
     }
   ],
-  "description": "MATLAB toolchain reproducing the numerical results, figures and tables of the companion manuscript on a simplified engineering algorithm for collision risk assessment and classification of LEO satellites, from a May 2026 Celestrak General Perturbations catalogue snapshot.",
+  "description": "MATLAB toolchain reproducing the numerical results, figures and tables of the companion manuscript on a simplified engineering algorithm for collision risk assessment and classification of LEO satellites, from a May 2026 Celestrak General Perturbations catalogue snapshot. Version 2.1.0 adds the evaluation across the whole catalogue (14 727 active LEO objects), the Sentinel-6 end-of-life options and the collision-avoidance sensitivity of the revision for Advances in Space Research.",
   "related_identifiers": [
     {
       "identifier": "https://doi.org/10.48550/arXiv.2606.17947",

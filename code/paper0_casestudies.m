@@ -65,6 +65,7 @@ cases(2).mission.it  = 0.2;   cases(2).mission.r  = 7714;            % 1336+6378
 cases(2).mission.ecc = 0.0001;cases(2).mission.w  = 0;   cases(2).mission.ra = 0;
 cases(2).mission.inc = 66;    cases(2).mission.pl = 'G'; cases(2).mission.net = 0;
 cases(2).mission.man = 'U';   cases(2).mission.cost = 4.0e8;
+cases(2).mission.in_catalogue = true;                                % Sentinel-6A is in the catalogue
 cases(2).sc.ex_surf  = 10;    cases(2).sc.tot_surf = 25;  cases(2).sc.rho = 480;
 
 % --- 3) Starlink V2 Mini : constellation element, ~525 km ------------ %
@@ -74,6 +75,7 @@ cases(3).mission.it  = 0.2;   cases(3).mission.r  = 6903;            % 525+6378
 cases(3).mission.ecc = 0.0001;cases(3).mission.w  = 0;   cases(3).mission.ra = 0;
 cases(3).mission.inc = 53;    cases(3).mission.pl = 'C'; cases(3).mission.net = 1;
 cases(3).mission.man = 'U';   cases(3).mission.cost = 1.0e6;
+cases(3).mission.in_catalogue = true;                                % a catalogued V2 Mini
 cases(3).sc.ex_surf  = 12;    cases(3).sc.tot_surf = 30;  cases(3).sc.rho = 400;
 
 % ====================================================================== %

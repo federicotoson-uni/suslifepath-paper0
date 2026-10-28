@@ -96,6 +96,7 @@ case_ex    = [100, 10, 12];
 case_tot   = [250, 25, 30];
 case_inc   = [98.4, 66, 53];
 case_mass  = [8211, 1192, 800];       % [kg] published / SpaceX engineering value
+case_incat = [false, true, true];      % revision: Sentinel-6A and the V2 Mini are in the catalogue (R2-7.1)
 
 case_Cind  = zeros(1,3);
 case_Ccol  = zeros(1,3);
@@ -103,7 +104,8 @@ case_Ceco  = zeros(1,3);
 for c = 1:3
     m  = struct('yol',2020,'lt',case_lt(c),'dt',case_dt(c),'it',0.2, ...
                 'r',case_rps(c),'ecc',0.001,'w',0,'ra',0, ...
-                'inc',case_inc(c),'pl','G','net',0,'man','U','cost',case_costs(c));
+                'inc',case_inc(c),'pl','G','net',0,'man','U','cost',case_costs(c), ...
+                'in_catalogue',case_incat(c));
     sc = struct('ex_surf',case_ex(c),'tot_surf',case_tot(c),'rho',500);
     [Pi, ~] = individual_probability_flux(PopulationData, m, sc);
     [Pc, ~] = collective_probability(PopulationData, m, sc, S_ref);
@@ -290,7 +292,7 @@ legend(h_legend, legend_labels, 'Location','northwest','FontSize',10);
 set(gca,'FontSize',13);
 
 % --- Save vector PDF -------------------------------------------------- %
-out_pdf = fullfile(FIG_DIR, 'Figure_7_ecob_benchmark.pdf');
+out_pdf = fullfile(FIG_DIR, 'Figure_7_ecob_benchmark_submitted.pdf');   % revision: the paper's figure now comes from paper0_catalogue.m
 exportgraphics(fig, out_pdf, 'ContentType','vector');
 fprintf('Saved: %s\n', out_pdf);
 
