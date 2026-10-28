@@ -77,8 +77,11 @@ fprintf('525 km shell: %d operational, %d Starlink (%.0f%%); against the other o
         nop, nst, 100 * nst / nop, casi(3).Rcol / casi(3).Rind * (1 - nst / nop), casi(3).Rcol * (1 - nst / nop));
 g = @(r) conta(cat.r_op, r) / conta(cat.r_all, r);   % share of operational objects in the reference shell
 for href = [525 550 600 700 770]
-    fprintf('Reference at %d km: operational %3.0f%% of the shell, Starlink R %5.0f, catalogue median %6.1f\n', href, ...
-            100 * g(6378 + href), casi(3).Rcol / casi(3).Rind * g(7078) / g(6378 + href), median(median(out.R(out.ok,:),1)) * g(7078) / g(6378 + href));
+    k  = g(7078) / g(6378 + href);                   % every R scales by the same constant
+    Rk = out.R * k;
+    fprintf('Reference at %d km: operational %3.0f%% of the shell, Starlink R %5.0f, catalogue median %6.1f, share R>1 %.3f (constellations %.3f), share R>100 %.3f\n', href, ...
+            100 * g(6378 + href), casi(3).Rcol / casi(3).Rind * k, median(median(Rk(out.ok,:),1)), ...
+            median(mean(Rk(out.ok,:) > 1, 1)), median(mean(Rk(out.ok & pri.gruppo == 1,:) > 1, 1)), median(mean(Rk(out.ok,:) > 100, 1)));
 end
 
 % ---- ECOB proxy (Section 5.1): Spearman with R_col, catalogue plus the three cases -------------

@@ -7,7 +7,7 @@ Companion repository for the manuscript
 
 > Toson, F. *A simplified engineering algorithm for collision risk assessment and classification of LEO satellites.* Advances in Space Research, 2026, under revision. Pre-print: [arXiv:2606.17947](https://doi.org/10.48550/arXiv.2606.17947).
 
-The MATLAB toolchain reproduces all numerical results, figures and tables of the paper from a May 2026 Celestrak General Perturbations catalogue snapshot. Version 2.1.0 is the revision for Advances in Space Research: a catalogued mission is removed from its own shell count (`mission.in_catalogue = true`), the two indices are evaluated for all 14 727 active LEO objects in place of the N = 100 sample, and two analyses are added (Sentinel-6 end-of-life options, collision avoidance). The scripts of the submitted version are kept and marked as such.
+The MATLAB toolchain reproduces all numerical results, figures and tables of the paper from a May 2026 Celestrak General Perturbations catalogue snapshot. Version 2.1 is the revision for Advances in Space Research: a catalogued mission is removed from its own shell count (`mission.in_catalogue = true`), the two indices are evaluated for all 14 727 active LEO objects in place of the N = 100 sample, and two analyses are added (Sentinel-6 end-of-life options, collision avoidance). The scripts of the submitted version are kept and marked as such.
 
 ## Contents
 
@@ -110,8 +110,8 @@ others, 600-1500 km           908 |    4.4 [   4.1    4.9] | 0.900 [0.870 0.925]
 others, above 1500 km           3 |    3.4 [   1.5    7.3] | 1.000 [0.667 1.000] | 0.000 [0.000 0.000]
 Starlink V2 Mini  ind    0.0943  col   29.9328  R   317.30
 525 km shell: 2389 operational, 1821 Starlink (76%); against the other operators R 75, collective 7.1
-Reference at 550 km: operational  96% of the shell, Starlink R    62, catalogue median   16.4
-Reference at 700 km: operational  19% of the shell, Starlink R   317, catalogue median   84.1
+Reference at 550 km: operational  96% of the shell, Starlink R    62, catalogue median   16.4, share R>1 0.965 (constellations 1.000), share R>100 0.000
+Reference at 700 km: operational  19% of the shell, Starlink R   317, catalogue median   84.1, share R>1 0.994 (constellations 1.000), share R>100 0.381
 Spearman R_col vs ECOB proxy (n = 14722): median 0.944 [0.943 0.947]
 A2: Spearman with R_col 0.9990 [0.9989 0.9991]; median R 64.0 (was 84.1); share R>1 0.990
 A4: 120 objects with apogee - perigee > 100 km
@@ -189,7 +189,7 @@ Consistent with Elsevier policy, the manuscript that this repository accompanies
 
 If you use this code or data, please cite the paper and this software release:
 
-> Toson, F. (2026). *suslifepath-paper0: collision-risk index toolchain and catalogue snapshot* (v2.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.20554997
+> Toson, F. (2026). *suslifepath-paper0: collision-risk index toolchain and catalogue snapshot* (v2.1.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.20554997
 >
 > The concept DOI [10.5281/zenodo.20554997](https://doi.org/10.5281/zenodo.20554997) always resolves to the latest version; each release also carries its own version DOI on Zenodo.
 
